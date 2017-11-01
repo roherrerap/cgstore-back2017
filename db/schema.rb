@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20171101043936) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["feature_id"], name: "index_attributeproducts_on_feature_id"
-    t.index ["product_id"], name: "index_attributeproducts_on_product_id"
+    t.index ["typeproduct_id"], name: "index_attributeproducts_on_typeproduct_id"
   end
 
   create_table "features", force: :cascade do |t|
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 20171101043936) do
   end
 
   add_foreign_key "attributeproducts", "features"
-  add_foreign_key "attributeproducts", "products"
+  add_foreign_key "attributeproducts", "typeproducts"
   add_foreign_key "informationquotes", "attributeproducts"
   add_foreign_key "informationquotes", "quotes"
   add_foreign_key "quotes", "products"
