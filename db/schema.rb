@@ -18,14 +18,14 @@ ActiveRecord::Schema.define(version: 20171101043936) do
   create_table "attributeproducts", force: :cascade do |t|
     t.text "range"
     t.bigint "product_id"
-    t.bigint "attribute_id"
+    t.bigint "feature_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["attribute_id"], name: "index_attributeproducts_on_attribute_id"
+    t.index ["feature_id"], name: "index_attributeproducts_on_feature_id"
     t.index ["product_id"], name: "index_attributeproducts_on_product_id"
   end
 
-  create_table "attributes", force: :cascade do |t|
+  create_table "features", force: :cascade do |t|
     t.string "name"
     t.string "type"
     t.datetime "created_at", null: false
@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 20171101043936) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
-  add_foreign_key "attributeproducts", "attributes"
+  add_foreign_key "attributeproducts", "features"
   add_foreign_key "attributeproducts", "products"
   add_foreign_key "informationquotes", "attributeproducts"
   add_foreign_key "informationquotes", "quotes"
