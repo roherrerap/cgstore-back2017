@@ -12,7 +12,7 @@ class AttributesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create attribute" do
     assert_difference('Attribute.count') do
-      post attributes_url, params: { attribute: { name: @attribute.name, type: @attribute.type } }, as: :json
+      post attributes_url, params: { attribute: { name: @attribute.name, typefeature: @attribute.type } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class AttributesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update attribute" do
-    patch attribute_url(@attribute), params: { attribute: { name: @attribute.name, type: @attribute.type } }, as: :json
+    patch attribute_url(@attribute), params: { attribute: { name: @attribute.name, typefeature: @attribute.type } }, as: :json
     assert_response 200
   end
 

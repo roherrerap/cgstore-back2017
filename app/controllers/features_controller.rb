@@ -46,6 +46,6 @@ class FeaturesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def feature_params
-      params.require(:feature).permit(:name, :type)
+      params.require(:feature).permit(:name, :typefeature)
     end
 end
