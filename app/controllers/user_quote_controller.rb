@@ -8,7 +8,7 @@ class UserQuoteController < ApplicationController
         query = "select
             quotes.id as pedidoid,
             quotes.date as fecha,
-            products.name as familiaproducto
+            products.name as familiaproducto,
             typeproducts.name as tipoproducto,
             quotes.quantity as cantidad,
             quotes.state as estado,
