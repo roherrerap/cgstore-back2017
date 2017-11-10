@@ -13,7 +13,7 @@ class UserQuoteController < ApplicationController
             quotes.quantity as cantidad,
             quotes.state as estado,
             features.name as nombrecampo,
-            informationquotes.value as valorcampo,
+            informationquotes.value as valorcampo
         from
             users, quotes, informationquotes, features, attributeproducts, typeproducts, products
         where
