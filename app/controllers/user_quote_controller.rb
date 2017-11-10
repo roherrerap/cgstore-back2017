@@ -8,20 +8,12 @@ class UserQuoteController < ApplicationController
         query = "select
             quotes.id as pedidoid,
             quotes.date as fecha,
-            attributeproducts.typeproduct_id as productoid,
+            products.name as familiaproducto
+            typeproducts.name as tipoproducto,
             quotes.quantity as cantidad,
-            concat(users.firstname,' ',users.lastname) as nombre,
-            users.document as cedula,
-            users.address as direccion,
-            users.phone as telefono,
-            users.enterprise as empresa,
-            users.email as email,
-            users.nit as nit,
-            users.role as cargo,
+            quotes.state as estado,
             features.name as nombrecampo,
             informationquotes.value as valorcampo,
-            typeproducts.name as tipoproducto,
-            products.name as familiaproducto
         from
             users, quotes, informationquotes, features, attributeproducts, typeproducts, products
         where
@@ -37,18 +29,10 @@ class UserQuoteController < ApplicationController
                 cotizacion = Hash.new
                 cotizacion["pedidoid"] = row['pedidoid']
                 cotizacion["fecha"] = row['fecha']
-                cotizacion["productoid"] = row['productoid']
-                cotizacion["cantidad"] = row['cantidad']
-                cotizacion["nombre"] = row['nombre']
-                cotizacion["cedula"] = row['cedula']
-                cotizacion["direccion"] = row['direccion']
-                cotizacion["telefono"] = row['telefono']
-                cotizacion["email"] = row['email']
-                cotizacion["empresa"] = row['empresa']
-                cotizacion["nit"] = row['nit']
-                cotizacion["cargo"] = row['cargo']
-                cotizacion["tipoproducto"] = row['tipoproducto']
                 cotizacion["familiaproducto"] = row['familiaproducto']
+                cotizacion["tipoproducto"] = row['tipoproducto']
+                cotizacion["cantidad"] = row['cantidad']
+                cotizacion["estado"] = row['estado']
                 cotizacionId = row['pedidoid']
             end
             cotizacion[row['nombrecampo']] = row['valorcampo']
