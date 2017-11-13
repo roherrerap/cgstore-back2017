@@ -5,6 +5,7 @@ class AutomatizationsController < ApplicationController
     my_array = Array.new
     cotizacion = Hash.new
     recibido = params[:state]
+    recibido2 = params[:productid]
     query = "select
                quotes.id as pedidoid,
                quotes.date as fecha,
@@ -21,11 +22,12 @@ class AutomatizationsController < ApplicationController
                features.name as nombrecampo,
                informationquotes.value as valorcampo
              from
-               users, quotes, informationquotes, features, attributeproducts
+               users, quotes, informationquotes, features, attributeproducts, typeproducts
              where
-               users.id = quotes.user_id and quotes.id = informationquotes.quote_id and informationquotes.attributeproduct_id = attributeproducts.id and attributeproducts.feature_id = features.id and quotes.state like '" + recibido.to_s + "'
+               users.id = quotes.user_id and quotes.id = informationquotes.quote_id and informationquotes.attributeproduct_id = attributeproducts.id and attributeproducts.feature_id = features.id and attributeproducts.typeproduct_id = " + recibido2.to_s + " and quotes.state like '" + recibido.to_s + "'
              order by
                quotes.id asc"
+    puts(query)
     results = ActiveRecord::Base.connection.execute(query)
     if results.present?
       results.each do |row|
